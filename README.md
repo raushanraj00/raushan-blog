@@ -8,16 +8,6 @@
 
 A modern, animated portfolio website with blog functionality, built from scratch using pure HTML, CSS, and JavaScript. This project showcases my front-end development skills as a fresher looking to enter the web development industry.
 
-## 🌐 Live Demo
-
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Click_Here-blue?style=for-the-badge&logo=github)](https://your-username.github.io/repository-name/)
-
-*Replace the above link with your actual GitHub Pages URL*
-
-## 📸 Preview
-
-![Website Preview](https://via.placeholder.com/800x400/6a11cb/ffffff?text=Raushan's+Animated+Portfolio)
-*Add screenshots of your website here*
 
 ## ✨ Features
 
