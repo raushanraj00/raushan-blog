@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raushan's Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --accent-color: #ff8a00;
+            --dark-color: #121212;
+            --light-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #777;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-scrolled {
+            padding: 1rem 0;
+            background: rgba(106, 17, 203, 0.95);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.8rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+            url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .cta-button {
+            margin-top: 25px;
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Section title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+        }
+
+        /* About */
+        .about {
+            background: white;
+            padding: 70px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 80px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        /* Blog */
+        .blog {
+            padding: 80px 0;
+            background: #f0f4f8;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .blog-content {
+            padding: 22px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .social-links a {
+            color: white;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        @media(max-width:768px){
+            nav ul { display: none; }
+            .mobile-toggle { display: block; }
+            .about-content { flex-direction: column; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header id="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-blog"></i> Raushan's Blog
+            </div>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Hey, I’m Raushan 👋</h1>
+        <p>
+            I’m a web development learner who enjoys building things on the internet.
+            This blog is where I share what I learn, experiment with, and find useful
+            while improving my skills.
+        </p>
+        <a href="#blog" class="cta-button">Explore My Blogs →</a>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+
+        <div class="about">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="pexels-life-of-pix-316902.jpg" alt="Raushan">
+                </div>
+                <div class="about-text">
+                    <h3>Hello, I’m Raushan Raj</h3>
+                    <p>
+                        I’m a self-driven web development learner with a strong interest
+                        in building clean and functional websites. I started with basic
+                        HTML and CSS and gradually moved into JavaScript.
+                    </p>
+                    <p>
+                        I enjoy learning by building projects, breaking things, fixing them,
+                        and understanding how everything works. This blog helps me track
+                        my progress and share useful resources.
+                    </p>
+                    <p>
+                        Outside coding, I explore tech content, watch tutorials, and
+                        experiment with designs. Still learning every day.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="blog" id="blog">
+    <div class="container">
+        <div class="section-title">
+            <h2>Latest Posts</h2>
+        </div>
+
+        <div class="blog-posts">
+
+            <div class="blog-card">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>December 15, 2025</span>
+                        <span>~5 min read</span>
+                    </div>
+                    <h3>Web Development in 2025 – What I Think Will Matter</h3>
+                    <p>
+                        Some web development trends and technologies that I believe will
+                        be important in the coming years based on what I’m learning.
+                    </p>
+                    <a href="https://www.mindpathtech.com/blog/web-development-trends/" target="_blank" class="read-more">
+                        Read More →
+                    </a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>December 17, 2025</span>
+                        <span>~6 min read</span>
+                    </div>
+                    <h3>CSS Animations I’m Learning and Actually Using</h3>
+                    <p>
+                        A helpful CSS animation playlist that improved my understanding
+                        of transitions, keyframes, and motion in UI design.
+                    </p>
+                    <a href="https://www.youtube.com/playlist?list=PLjVLYmrlmjGcotVRgbduK05oOMnt-9r8H" target="_blank" class="read-more">
+                        View Playlist →
+                    </a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>December 19, 2025</span>
+                        <span>~4 min read</span>
+                    </div>
+                    <h3>Full Stack Development Roadmap (Beginner Friendly)</h3>
+                    <p>
+                        A simple roadmap that gives clarity on what to learn in full
+                        stack development and how technologies connect.
+                    </p>
+                    <a href="https://roadmap.sh/full-stack" target="_blank" class="read-more">
+                        View Roadmap →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+
+            <div class="footer-column">
+                <h3>Raushan's Blog</h3>
+                <p>
+                    This is my personal space on the internet where I share my
+                    learning journey in web development and useful resources.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/raushan-raj-020163377/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/its_raushan_crazer/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>Bihar, India</p>
+                <p>Email: raushanraj00650@gmail.com</p>
+                <p>Phone: +91 73219 44505</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2025 Raushan Raj. Built while learning.
+        </div>
+    </div>
+</footer>
+
+<script>
+    const mobileToggle = document.getElementById("mobile-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    mobileToggle.addEventListener("click", () => {
+        navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+    });
+
+    window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        header.classList.toggle("header-scrolled", window.scrollY > 100);
+    });
+</script>
+
+</body>
+</html>
